@@ -1,0 +1,9 @@
+node_modules/
+package-lock.json
+.idea/
+.idea
+.env
+/out/
+*.iml
+*.class
+.DS_Store
