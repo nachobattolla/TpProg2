@@ -9,7 +9,7 @@ public abstract class User {
         this.phoneNumber = phoneNumber;
     }
 
-    abstract void SelfRecordingOfSymptoms();
+    void SelfRecordingOfSymptoms(){};
 }
 
 

@@ -3,23 +3,37 @@ import java.util.ArrayList;
 
 public class Citizen extends User {
 
-    boolean isBlock;
-    ArrayList<Request> recivedRequest;
-    int counterRequest;
+    boolean isBan;
+    ArrayList<Invitation> receivedInvitations;
+    ArrayList<FaceToFaceMeeting> acceptedRequest;
+    int rejections;
 
-    public Citizen(int cuil, int phoneNumber, boolean isBlock, ArrayList<Request> recivedRequest, int counterRequest) {
+    public Citizen(int cuil, int phoneNumber) {
         super(cuil, phoneNumber);
-        this.isBlock = isBlock;
-        this.recivedRequest = recivedRequest;
-        this.counterRequest = counterRequest;
+        this.receivedInvitations = new ArrayList<Invitation>();
+        this.acceptedRequest = new ArrayList<FaceToFaceMeeting>();
+        this.isBan = false;
+        this.rejections = 0;
     }
 
-    public boolean reciveMeetingRequest(){
+    public boolean receiveMeetingRequest(){ // aceptar o rechazar invitacion para facetofaceMeeting; - Nacho B
+
         return true;
     }
 
-    @Override
-    void SelfRecordingOfSymptoms() {
+    void sendRequest(Citizen sendTo, Invitation invitation){
+        sendTo.receivedInvitations.add(invitation);
+    }
+
+    public void acceptedRequest(Invitation invitation){
+        receivedInvitations.remove(invitation);
+        acceptedRequest.add(invitation.meeting);
+    }
+
+    public void rejectedRequest(Invitation invitation){
+        receivedInvitations.remove(invitation);
+        invitation.transmitter.rejections ++;
 
     }
+
 }
